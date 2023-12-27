@@ -1,0 +1,37 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 5px solid black;
+}
+
+.search {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    background-color: bisque;
+}
+
+
+.weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.current {
+    height: 50vh;
+    width: 60vh;
+    border: 2px solid blue;
+    margin: 3%;
+}
+
+.forecast {
+    height: 50vh;
+    width: 60vh;
+    border: 2px solid blue;
+    margin: 3%;
+}
