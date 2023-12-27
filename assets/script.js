@@ -1,4 +1,7 @@
 const cityName = document.getElementById("city");
+const nameEl = document.querySelector(".name");
+const today = dayjs().format('MM/DD/YYYY');
+const dataEl = document.querySelector(".data");
 
 function getCoords() {
     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
@@ -8,9 +11,8 @@ function getCoords() {
             response.json().then(function (data) {
                 console.log(data);
                 const lat = data[0].lat;
-                console.log(lat);
                 const lon = data[0].lon;
-                console.log(lon);
+                nameEl.innerHTML = data[0].name + ", " + data[0].state + " " + today;
                 function getCurrentWeather() {
                     let requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=841bff87cafe164f0f5f33bd44701bfc&units=imperial";
                 
@@ -18,6 +20,7 @@ function getCoords() {
                         if (response.ok) {
                             response.json().then(function (data) {
                                 console.log(data);
+                                dataEl.innerHTML = `Current temp: ${data.main.temp} F<br>High: ${data.main.temp_max} F<br>Low: ${data.main.temp_min} F<br>Wind: ${data.wind.speed} mph<br>Humidity: ${data.main.humidity} %rh`;
                             })
                         }
                     })
@@ -40,19 +43,6 @@ function getCoords() {
     })
 };
 
-/* function getWeather() {
-    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=841bff87cafe164f0f5f33bd44701bfc";
-
-    fetch(requestUrl).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                console.log(data);
-            })
-        }
-    })
-}; */
-
-
 function storeCity() {
     localStorage.setItem("storedCity", JSON.stringify(cityName));
 };
@@ -61,7 +51,6 @@ function weatherSearch() {
     console.log(cityName);
     storeCity();
     getCoords();
-    /* getWeather(); */
 }
 
 const storedCityName = JSON.parse(localStorage.getItem("storedCity"));
