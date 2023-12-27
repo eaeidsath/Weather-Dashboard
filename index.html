@@ -18,15 +18,20 @@
     </nav>
 
     <main class="page">
-        <section class="sideBar">
-            <div class="search">
-                <label for="city">Search for a city:</label>
-                <input type="text" id="city" name="city">
-                <button onclick="weatherSearch()">Submit</button>
+        <section class="sidebar">
+            <section>
+                <div class="search">
+                    <label for="city">Search for a city:</label>
+                    <input type="text" id="city" name="city">
+                    <button onclick="weatherSearch()">Submit</button>
+                </div>
+                <aside>
+                    <ol class="history"></ol>
+                </aside>
+            </section>
+            <div>
+                <button>Clear History</button>
             </div>
-            <aside class="history">
-                content
-            </aside>
         </section>
 
         <section class="weather">

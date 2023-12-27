@@ -3,6 +3,8 @@ const nameEl = document.querySelector(".name");
 const today = dayjs().format('MM/DD/YYYY');
 const dataEl = document.querySelector(".data");
 
+var savedCities = [];
+
 function getCoords() {
     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
 
@@ -52,14 +54,33 @@ function getCoords() {
     })
 };
 
+function renderCities() {
+    var li = document.createElement("li");
+
+    li.textContent = cityName.value;
+    document.querySelector(".history").appendChild(li);
+}
+
 function storeCity() {
-    localStorage.setItem("storedCity", JSON.stringify(cityName));
+    localStorage.setItem("savedCities", JSON.stringify(savedCities));
 };
 
 function weatherSearch() {
     console.log(cityName);
+    savedCities.push(cityName.value);
     storeCity();
     getCoords();
+    renderCities();
+}
+
+function init() {
+    for (var i = 0; i < savedCities.length; i++) {
+        var li = document.createElement("li");
+
+        li.textContent = savedCities[i];
+        li.setAttribute("data-index", i);
+        document.querySelector(".history").appendChild(li);
+    }
 }
 
 const storedCityName = JSON.parse(localStorage.getItem("storedCity"));
