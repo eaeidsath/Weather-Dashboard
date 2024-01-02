@@ -2,6 +2,7 @@ const cityName = document.getElementById("city");
 const nameEl = document.querySelector(".name");
 const today = dayjs().format('MM/DD/YYYY');
 const dataEl = document.querySelector(".data");
+const clearButton = document.getElementById("clearButton");
 
 var savedCities = [];
 
@@ -22,7 +23,7 @@ function getCoords() {
                         if (response.ok) {
                             response.json().then(function (data) {
                                 console.log(data);
-                                dataEl.innerHTML = `Current temp: ${data.main.temp} F<br>High: ${data.main.temp_max} F<br>Low: ${data.main.temp_min} F<br>Wind: ${data.wind.speed} mph<br>Humidity: ${data.main.humidity}% rh`;
+                                dataEl.innerHTML = `<img src=https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png><br>${data.weather[0].description}<br>Current temp: ${data.main.temp} F<br>High: ${data.main.temp_max} F<br>Low: ${data.main.temp_min} F<br>Wind: ${data.wind.speed} mph<br>Humidity: ${data.main.humidity}% rh`;
                             })
                         }
                     })
@@ -35,15 +36,15 @@ function getCoords() {
                         if (response.ok) {
                             response.json().then(function (data) {
                                 console.log(data);
-                                document.querySelector(".day1").innerHTML = `${data.list[4].dt_txt}<br>Temp: ${data.list[4].main.temp} F<br>Wind: ${data.list[4].wind.speed} mph<br>Humidity: ${data.list[4].main.humidity}% rh`;
+                                document.querySelector(".day1").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[4].weather[0].icon}@2x.png><br>${data.list[4].dt_txt}<br>${data.list[4].weather[0].description}<br>Temp: ${data.list[4].main.temp} F<br>Wind: ${data.list[4].wind.speed} mph<br>Humidity: ${data.list[4].main.humidity}% rh`;
 
-                                document.querySelector(".day2").innerHTML = `${data.list[12].dt_txt}<br>Temp: ${data.list[12].main.temp} F<br>Wind: ${data.list[12].wind.speed} mph<br>Humidity: ${data.list[12].main.humidity}% rh`;
+                                document.querySelector(".day2").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[12].weather[0].icon}@2x.png><br>${data.list[12].dt_txt}<br>${data.list[12].weather[0].description}<br>Temp: ${data.list[12].main.temp} F<br>Wind: ${data.list[12].wind.speed} mph<br>Humidity: ${data.list[12].main.humidity}% rh`;
 
-                                document.querySelector(".day3").innerHTML = `${data.list[20].dt_txt}<br>Temp: ${data.list[20].main.temp} F<br>Wind: ${data.list[20].wind.speed} mph<br>Humidity: ${data.list[20].main.humidity}% rh`;
+                                document.querySelector(".day3").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[20].weather[0].icon}@2x.png><br>${data.list[20].dt_txt}<br>${data.list[20].weather[0].description}<br>Temp: ${data.list[20].main.temp} F<br>Wind: ${data.list[20].wind.speed} mph<br>Humidity: ${data.list[20].main.humidity}% rh`;
 
-                                document.querySelector(".day4").innerHTML = `${data.list[28].dt_txt}<br>Temp: ${data.list[28].main.temp} F<br>Wind: ${data.list[28].wind.speed} mph<br>Humidity: ${data.list[28].main.humidity}% rh`;
+                                document.querySelector(".day4").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[28].weather[0].icon}@2x.png><br>${data.list[28].dt_txt}<br>${data.list[28].weather[0].description}<br>Temp: ${data.list[28].main.temp} F<br>Wind: ${data.list[28].wind.speed} mph<br>Humidity: ${data.list[28].main.humidity}% rh`;
 
-                                document.querySelector(".day5").innerHTML = `${data.list[36].dt_txt}<br>Temp: ${data.list[36].main.temp} F<br>Wind: ${data.list[36].wind.speed} mph<br>Humidity: ${data.list[36].main.humidity}% rh`;
+                                document.querySelector(".day5").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[36].weather[0].icon}@2x.png><br>${data.list[36].dt_txt}<br>${data.list[36].weather[0].description}<br>Temp: ${data.list[36].main.temp} F<br>Wind: ${data.list[36].wind.speed} mph<br>Humidity: ${data.list[36].main.humidity}% rh`;
                             })
                         }
                     })
@@ -57,7 +58,7 @@ function getCoords() {
 function renderCities() {
     var li = document.createElement("li");
 
-    li.innerHTML = `<button onclick="seeHistory(event)" value="${cityName.value}">${cityName.value}</button>`;
+    li.innerHTML = `<button class="btn btn-light" onclick="seeHistory(event)" value="${cityName.value}">${cityName.value}</button>`;
     document.querySelector(".history").appendChild(li);
 }
 
@@ -80,7 +81,7 @@ function init() {
         for (var i = 0; i < storedCities.length; i++) {
             var li = document.createElement("li");
 
-            li.innerHTML = `<button onclick="seeHistory(event)" value="${storedCities[i]}">${storedCities[i]}</button>`;
+            li.innerHTML = `<button class="btn btn-light" onclick="seeHistory(event)" value="${storedCities[i]}">${storedCities[i]}</button>`;
             document.querySelector(".history").appendChild(li);
         }
     }
@@ -104,7 +105,7 @@ function seeHistory(event) {
                         if (response.ok) {
                             response.json().then(function (data) {
                                 console.log(data);
-                                dataEl.innerHTML = `Current temp: ${data.main.temp} F<br>High: ${data.main.temp_max} F<br>Low: ${data.main.temp_min} F<br>Wind: ${data.wind.speed} mph<br>Humidity: ${data.main.humidity}% rh`;
+                                dataEl.innerHTML = `<img src=https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png><br>${data.weather[0].description}<br>Current temp: ${data.main.temp} F<br>High: ${data.main.temp_max} F<br>Low: ${data.main.temp_min} F<br>Wind: ${data.wind.speed} mph<br>Humidity: ${data.main.humidity}% rh`;
                             })
                         }
                     })
@@ -117,15 +118,15 @@ function seeHistory(event) {
                         if (response.ok) {
                             response.json().then(function (data) {
                                 console.log(data);
-                                document.querySelector(".day1").innerHTML = `${data.list[4].dt_txt}<br>Temp: ${data.list[4].main.temp} F<br>Wind: ${data.list[4].wind.speed} mph<br>Humidity: ${data.list[4].main.humidity}% rh`;
+                                document.querySelector(".day1").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[4].weather[0].icon}@2x.png><br>${data.list[4].dt_txt}<br>${data.list[4].weather[0].description}<br>Temp: ${data.list[4].main.temp} F<br>Wind: ${data.list[4].wind.speed} mph<br>Humidity: ${data.list[4].main.humidity}% rh`;
 
-                                document.querySelector(".day2").innerHTML = `${data.list[12].dt_txt}<br>Temp: ${data.list[12].main.temp} F<br>Wind: ${data.list[12].wind.speed} mph<br>Humidity: ${data.list[12].main.humidity}% rh`;
+                                document.querySelector(".day2").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[12].weather[0].icon}@2x.png><br>${data.list[12].dt_txt}<br>${data.list[12].weather[0].description}<br>Temp: ${data.list[12].main.temp} F<br>Wind: ${data.list[12].wind.speed} mph<br>Humidity: ${data.list[12].main.humidity}% rh`;
 
-                                document.querySelector(".day3").innerHTML = `${data.list[20].dt_txt}<br>Temp: ${data.list[20].main.temp} F<br>Wind: ${data.list[20].wind.speed} mph<br>Humidity: ${data.list[20].main.humidity}% rh`;
+                                document.querySelector(".day3").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[20].weather[0].icon}@2x.png><br>${data.list[20].dt_txt}<br>${data.list[20].weather[0].description}<br>Temp: ${data.list[20].main.temp} F<br>Wind: ${data.list[20].wind.speed} mph<br>Humidity: ${data.list[20].main.humidity}% rh`;
 
-                                document.querySelector(".day4").innerHTML = `${data.list[28].dt_txt}<br>Temp: ${data.list[28].main.temp} F<br>Wind: ${data.list[28].wind.speed} mph<br>Humidity: ${data.list[28].main.humidity}% rh`;
+                                document.querySelector(".day4").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[28].weather[0].icon}@2x.png><br>${data.list[28].dt_txt}<br>${data.list[28].weather[0].description}<br>Temp: ${data.list[28].main.temp} F<br>Wind: ${data.list[28].wind.speed} mph<br>Humidity: ${data.list[28].main.humidity}% rh`;
 
-                                document.querySelector(".day5").innerHTML = `${data.list[36].dt_txt}<br>Temp: ${data.list[36].main.temp} F<br>Wind: ${data.list[36].wind.speed} mph<br>Humidity: ${data.list[36].main.humidity}% rh`;
+                                document.querySelector(".day5").innerHTML = `<img src=https://openweathermap.org/img/wn/${data.list[36].weather[0].icon}@2x.png><br>${data.list[36].dt_txt}<br>${data.list[36].weather[0].description}<br>Temp: ${data.list[36].main.temp} F<br>Wind: ${data.list[36].wind.speed} mph<br>Humidity: ${data.list[36].main.humidity}% rh`;
                             })
                         }
                     })
@@ -135,3 +136,11 @@ function seeHistory(event) {
         }
     })
 };
+
+clearButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    savedCities = [];
+    localStorage.clear();
+    location.reload();
+    init();
+});
