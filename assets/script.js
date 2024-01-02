@@ -8,7 +8,7 @@ var savedCities = [];
 
 //fetch request for search function
 function getCoords() {
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
+    var requestUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
 
     fetch(requestUrl).then(function (response) {
         if (response.ok) {
@@ -95,7 +95,7 @@ init();
 
 //runs new fetch request when clicking on search history
 function seeHistory(event) {
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + event.target.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
+    var requestUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + event.target.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
 
     fetch(requestUrl).then(function (response) {
         if (response.ok) {

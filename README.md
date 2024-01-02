@@ -24,11 +24,11 @@ To clear your search history, click the "Clear History" button.
 
 ### Screenshots
 
-[Weather Dashboard Home](./assets/images/weather_dashboard_home.PNG)
+![Weather Dashboard Home](./assets/images/weather_dashboard_home.PNG)
 
-[Current Weather Results](./assets/images/weather_dashboard_current.PNG)
+![Current Weather Results](./assets/images/weather_dashboard_current.PNG)
 
-[Five Day Forecast Results](./assets/images/weather_dashboard_forecast.PNG)
+![Five Day Forecast Results](./assets/images/weather_dashboard_forecast.PNG)
 
 ## Credits
 
