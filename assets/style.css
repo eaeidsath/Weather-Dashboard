@@ -7,20 +7,18 @@ h1 {
     text-align: center;
 }
 
-li {
-    list-style: none;
-}
-
-.forecast div {
-    background-color: #415a77;
-    margin: 3%;
-}
-
 .page {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     background-color: #e0e1dd;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .search {
@@ -33,11 +31,8 @@ li {
     margin-left: 5px;
 }
 
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+li {
+    list-style: none;
 }
 
 .weather {
@@ -61,6 +56,11 @@ li {
     height: 50vh;
     margin: 3%;
     padding: 3%;
+}
+
+.forecast div {
+    background-color: #415a77;
+    margin: 3%;
 }
 
 footer {

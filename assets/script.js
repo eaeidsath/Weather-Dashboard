@@ -6,6 +6,7 @@ const clearButton = document.getElementById("clearButton");
 
 var savedCities = [];
 
+//fetch request for search function
 function getCoords() {
     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
 
@@ -55,6 +56,7 @@ function getCoords() {
     })
 };
 
+//prints search history onto page
 function renderCities() {
     var li = document.createElement("li");
 
@@ -62,10 +64,12 @@ function renderCities() {
     document.querySelector(".history").appendChild(li);
 }
 
+//stores search history in local storage
 function storeCity() {
     localStorage.setItem("storedCities", JSON.stringify(savedCities));
 };
 
+//combines previous functions into one
 function weatherSearch() {
     console.log(cityName);
     savedCities.push(cityName.value);
@@ -74,6 +78,7 @@ function weatherSearch() {
     renderCities();
 }
 
+//prints stored search history on page load
 function init() {
     const storedCities = JSON.parse(localStorage.getItem("storedCities"));
     if (storedCities !== null) {
@@ -88,6 +93,7 @@ function init() {
 }
 init();
 
+//runs new fetch request when clicking on search history
 function seeHistory(event) {
     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + event.target.value + "&limit=3&appid=841bff87cafe164f0f5f33bd44701bfc";
 
@@ -137,6 +143,7 @@ function seeHistory(event) {
     })
 };
 
+//clears search history and reloads page
 clearButton.addEventListener("click", function(event) {
     event.preventDefault();
     savedCities = [];
